@@ -42,7 +42,7 @@ function getContent(cookie){
 		.end(function(err,res){
 			var $ = cheerio.load(res.text,{decodeEntities:false});
 			var arr = [];
-			$('tbody tr').each(function(index,item){
+			$('table.table-1 tbody tr').each(function(index,item){
 				var time = $($(item).find('td')[0]).html();//日期
 				var name = $($(item).find('td')[1]).html();//用户
 				var opt = $($(item).find('td')[2]).html();//动作
