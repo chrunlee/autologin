@@ -48,9 +48,9 @@ function getContent(cookie){
 				var opt = $($(item).find('td')[2]).html();//动作
 				var obj = $($(item).find('td')[3]).html();//对象
 				var content = $($(item).find('td')[5]).html();//内容
-				console.log('[info] : name='+name+',opt='+opt+',obj='+obj);
 				name = name.replace(/\\n/g,'');
 				name = name.trim();
+				console.log('[info] : name='+name+',opt='+opt+',obj='+obj);
 				arr.push({
 					user : name,
 					opt : opt,
