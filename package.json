@@ -1,13 +1,14 @@
 {
   "name": "autologin",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "",
   "main": "index.js",
   "dependencies": {
     "iconv-lite": "^0.4.19",
     "mysql": "^2.15.0",
     "nodemailer": "^4.4.0",
-    "phantomjs": "^2.1.7"
+    "phantomjs": "^2.1.7",
+    "swig": "^1.4.2"
   },
   "devDependencies": {},
   "scripts": {
