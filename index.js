@@ -16,6 +16,7 @@ var info = require('./info');
 var task = require('./Task');
 //chandao
 var chandao = require('./chandao');
+
 info('2',function(err,rst){
 	var user = rst[0];
 	task.push(function(cb){
@@ -27,6 +28,6 @@ info('2',function(err,rst){
 
 task.start(24 * 60 * 60 * 1000);
 
-app.listen(5100,function(){
+app.listen(5200,function(){
 	console.log('port : 5100');
 });
