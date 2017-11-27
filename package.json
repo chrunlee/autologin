@@ -3,10 +3,16 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "dependencies": {},
+  "dependencies": {
+    "iconv-lite": "^0.4.19",
+    "mysql": "^2.15.0",
+    "nodemailer": "^4.4.0",
+    "phantomjs": "^2.1.7"
+  },
   "devDependencies": {},
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "phantomjs": "node_modules/.bin/phantomjs"
   },
   "repository": {
     "type": "git",

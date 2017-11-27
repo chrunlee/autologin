@@ -11,14 +11,21 @@ app.engine('html',swig.renderFile);
 
 app.use(express.static(path.join(__dirname,'pic')));
 
-app.get('/',function(req,res){
-	//获得pic下图片展示
-	var files = fs.readdirSync('pic');
-	res.render('index',{files:files});
+
+var info = require('./info');
+var task = require('./Task');
+//chandao
+var chandao = require('./chandao');
+info('2',function(err,rst){
+	var user = rst[0];
+	task.push(function(cb){
+		chandao(user[0],user[1],function(){
+			cb(null,true);
+		});
+	});
 });
 
-var daywork = require('./daywork');
-daywork();
+task.start(24 * 60 * 60 * 1000);
 
 app.listen(5100,function(){
 	console.log('port : 5100');
