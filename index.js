@@ -21,7 +21,7 @@ info('2',function(err,rst){
 	var user = rst[0];
 	console.log(user.description)
 	task.push(function(cb){
-		chandao(user.user,user.pwd,function(){
+		chandao(user.user,user.pwd,user.description,function(){
 			cb(null,true);
 		});
 	});
