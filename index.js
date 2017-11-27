@@ -19,8 +19,9 @@ var chandao = require('./chandao');
 
 info('2',function(err,rst){
 	var user = rst[0];
+	console.log(user.description)
 	task.push(function(cb){
-		chandao(user[0],user[1],function(){
+		chandao(user.user,user.pwd,function(){
 			cb(null,true);
 		});
 	});
