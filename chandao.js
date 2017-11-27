@@ -20,7 +20,8 @@ emitter.on('send',send);
 
 var callback = null;
 
-function getCookie(user,password,cb){
+function getCookie(user,password,des,cb){
+	console.log('[任务] : '+des);
 	callback = cb;
 	superagent.post(url)
 		.type('form')
@@ -99,6 +100,7 @@ function send(map){
 	content +='</div>';
 	var mailer = require('./mailer');
 	mailer('chrunlee@foxmail.com','禅道日常',content,function(){
+		console.log('禅道日常信息发送!已完成。');
 		if(callback){
 			callback();
 		}

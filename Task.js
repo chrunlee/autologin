@@ -3,10 +3,9 @@ var task = function(){
 	var cache = [];
 	var oneByOne = function(time){
 		async.mapLimit(cache,1,function(item,cb){
-			console.log('start next task');
 			item(cb);
 		},function(){
-			console.log('work is end,after '+time+'ms task will be restart');
+			console.log('当天工作已完成， '+(time/1000/60/60)+'小时后继续执行');
 			setTimeout(function(){
 				oneByOne(time);
 			},time);

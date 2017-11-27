@@ -26,8 +26,10 @@ info('2',function(err,rst){
 		});
 	});
 });
+setTimeout(function(){
+	task.start(24 * 60 * 60 * 1000);	
+},10 * 1000);
 
-task.start(24 * 60 * 60 * 1000);
 
 app.listen(5124,function(){
 	console.log('port : 5124');
