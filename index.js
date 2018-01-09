@@ -32,9 +32,11 @@ info('3',function(err,rst){
 	var user = rst[0];
 	var u = user.user,p = user.pwd,d = user.description;
 	var exec = require('child_process').exec;
-	exec('casperjs qiankuwang.js '+u +' ' + p,function(){
-		console.log(d);
-		cb(null,true);
+	task.push(function(cb){
+		exec('casperjs qiankuwang.js '+u +' ' + p,function(){
+			console.log(d);
+			cb(null,true);
+		});
 	});
 });
 
