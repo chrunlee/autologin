@@ -17,6 +17,7 @@ var task = require('./Task');
 //chandao
 var chandao = require('./chandao');
 
+//禅道
 info('2',function(err,rst){
 	var user = rst[0];
 	console.log(user.description)
@@ -26,6 +27,17 @@ info('2',function(err,rst){
 		});
 	});
 });
+//千库网
+info('3',function(err,rst){
+	var user = rst[0];
+	var u = user.user,p = user.pwd,d = user.description;
+	var exec = require('child_process').exec;
+	exec('casperjs qiankuwang.js '+u +' ' + p,function(){
+		console.log(d);
+		cb(null,true);
+	});
+});
+
 setTimeout(function(){
 	task.start(24 * 60 * 60 * 1000);	
 },10 * 1000);
