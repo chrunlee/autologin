@@ -13,10 +13,10 @@ casper.start().thenOpen(url,function(){
 	this.wait(15000);
 	
 });
-this.wait(15000,function(){
+casper.wait(15000,function(){
 	this.echo('等待')
 });
-this.then(function(){
+casper.then(function(){
 	this.capture('qianku.png');
 });
 
