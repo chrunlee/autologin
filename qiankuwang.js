@@ -20,7 +20,7 @@ casper.withFrame(0,function(){
 	this.capture('1.png');
 	this.echo('登录中...')
 	this.click('#switcher_plogin');//切换
-	this.wait(10000);
+	this.wait(15000);
 });
 casper.withFrame(0,function(){
 	this.capture('2.png');
@@ -28,18 +28,19 @@ casper.withFrame(0,function(){
 		'#u' : user,
 		'#p' : pwd
 	});
-	this.wait(10000);
+	this.wait(15000);
 });
 casper.withFrame(0,function(){
 	this.capture('3.png');
 	this.click('form#loginform input[type="submit"]');
+	this.wait(1000);
 	this.capture('4.png');
 	this.wait(15000);
 });
 casper.thenOpen(url,function(){
 	this.echo('进入'+url);
-	this.capture('4.png');
 	this.wait(15000);
+	this.capture('5.png');
 	this.waitForSelector('.already-sign-but');
 });
 
