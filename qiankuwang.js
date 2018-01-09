@@ -16,6 +16,7 @@ var user = casper.cli.args[0],
 	pwd = casper.cli.args[1];
 
 casper.start('http://588ku.com/index.php?m=login&a=snsLogin&type=qq&source=').viewport(1366, 2000).then(function(){
+	this.capture('1.png');
 	this.page.switchToChildFrame(0);
 	this.echo('login...');
 	this.click('#switcher_plogin');//切换
@@ -25,6 +26,7 @@ casper.start('http://588ku.com/index.php?m=login&a=snsLogin&type=qq&source=').vi
 	});
 	this.click('form#loginform input[type="submit"]');
 	this.wait(10000);
+	this.capture('2.png');
 });
 
 
