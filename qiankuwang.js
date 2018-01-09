@@ -4,7 +4,7 @@ var url = 'http://588ku.com/';
 
 var casper = require('casper').create({
 	verbose: true,
-    logLevel: "error",
+    logLevel: "debug",
     pageSettings: {
          loadImages:  true,        
          loadPlugins: true,    
@@ -20,7 +20,7 @@ casper.withFrame(0,function(){
 	this.echo(user);
 	this.echo('登录中...')
 	this.click('#switcher_plogin');//切换
-	this.wait(1000);
+	this.wait(10000);
 	this.capture('1.png');
 	this.fillSelectors('form#loginform',{
 		'#u' : user,
@@ -28,7 +28,7 @@ casper.withFrame(0,function(){
 	},true);
 	this.capture('2.png');
 	this.click('form#loginform input[type="submit"]');
-	this.wait(5000);
+	this.wait(15000);
 });
 
 casper.thenOpen(url,function(){
@@ -40,7 +40,7 @@ casper.thenOpen(url,function(){
 casper.then(function(){
 	this.echo('点击签到');
 	this.click('a.already-sign-but');
-	this.wait(2000);
+	this.wait(12000);
 });
 casper.then(function(){
 	if(this.exists('.signIn-btn')){
@@ -49,7 +49,7 @@ casper.then(function(){
 });
 casper.then(function(){
 	this.click('.signIn-btn');
-	this.wait(1000);
+	this.wait(11000);
 });
 casper.then(function(){
 	this.capture('res.png');
