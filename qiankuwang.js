@@ -26,6 +26,7 @@ casper.withFrame(0,function(){
 		'#u' : user,
 		'#p' : pwd
 	});
+	this.wait(10000);
 	this.capture('2.png');
 	this.click('form#loginform input[type="submit"]');
 	this.capture('4.png');
