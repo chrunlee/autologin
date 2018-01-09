@@ -37,6 +37,7 @@ casper.withFrame(0,function(){
 	this.wait(1000);
 	this.capture('3.png');
 	this.wait(10000);
+	this.capture('4.png');
 });
 
 
@@ -44,7 +45,7 @@ casper.withFrame(0,function(){
 casper.thenOpen(url,function(){
 	this.echo('incoming '+url);
 	this.wait(15000);
-	this.capture('3.png');
+	this.capture('5.png');
 	this.waitForSelector('.already-sign-but');
 });
 
