@@ -4,7 +4,7 @@ var url = 'http://588ku.com/';
 
 var casper = require('casper').create({
 	verbose: true,
-    logLevel: "debug",
+    logLevel: "error",
     pageSettings: {
          loadImages:  true,        
          loadPlugins: true,    
@@ -12,23 +12,28 @@ var casper = require('casper').create({
     }
 });
 
-var opts = require("utils").dump(casper.cli.args);
+var user = casper.cli.args[0],
+	pwd = casper.cli.args[1];
 
 casper.start().thenOpen('http://588ku.com/index.php?m=login&a=snsLogin&type=qq&source=',function(){});
 casper.withFrame(0,function(){
+	this.echo(user);
 	this.echo('登录中...')
 	this.click('#switcher_plogin');//切换
 	this.wait(1000);
+	this.capture('1.png');
 	this.fillSelectors('form#loginform',{
-		'#u' : opts[0],
-		'#p' : opts[1]
-	});
-	this.click('#loginform input[type="submit"]');
+		'#u' : user,
+		'#p' : pwd
+	},true);
+	this.capture('2.png');
+	this.click('form#loginform input[type="submit"]');
 	this.wait(5000);
 });
 
 casper.thenOpen(url,function(){
 	this.echo('进入'+url);
+	this.capture('3.png');
 	this.waitForSelector('.already-sign-but');
 });
 
