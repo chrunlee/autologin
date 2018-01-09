@@ -16,22 +16,29 @@ var user = casper.cli.args[0],
 	pwd = casper.cli.args[1];
 
 casper.start('http://588ku.com/index.php?m=login&a=snsLogin&type=qq&source=').viewport(1366, 2000).then(function(){
-	this.capture('1.png');
-	this.page.switchToChildFrame(0);
+
+});
+casper.withFrame(0,function(){
 	this.echo('login...');
 	this.click('#switcher_plogin');//切换
 	this.wait(1000);
+});
+casper.withFrame(0,function(){
 	this.fillSelectors('form#loginform',{
 		'#u' : user,
 		'#p' : pwd
 	});
 	this.wait(1000);
+});
+casper.withFrame(0,function(){
+	this.capture('1.png');
 	this.click('form#loginform input[type="submit"]');
 	this.capture('2.png');
+	this.wait(1000);
+	this.capture('3.png');
 	this.wait(10000);
-	this.capture('21.png');
-	this.capture('22.png')
 });
+
 
 
 casper.thenOpen(url,function(){
