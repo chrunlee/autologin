@@ -20,13 +20,19 @@ casper.start('http://588ku.com/index.php?m=login&a=snsLogin&type=qq&source=').vi
 	this.page.switchToChildFrame(0);
 	this.echo('login...');
 	this.click('#switcher_plogin');//切换
+	this.wait(1000);
 	this.fillSelectors('form#loginform',{
 		'#u' : user,
 		'#p' : pwd
 	});
+	this.wait(1000);
 	this.click('form#loginform input[type="submit"]');
-	this.wait(10000);
+	this.wait(1000);
 	this.capture('2.png');
+	this.wait(10000);
+	this.capture('21.png');
+	this.page.switchToParentFrame(0);
+	this.capture('22.png')
 });
 
 
