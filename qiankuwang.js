@@ -4,7 +4,7 @@ var url = 'http://588ku.com/';
 
 var casper = require('casper').create({
 	verbose: true,
-    logLevel: "debug",
+    logLevel: "error",
     pageSettings: {
          loadImages:  true,        
          loadPlugins: true,    
@@ -22,6 +22,9 @@ casper.withFrame(0,function(){
 	this.click('#switcher_plogin');//切换
 	this.wait(15000);
 });
+casper.then(function(){
+	this.capture('11.png');
+});
 casper.withFrame(0,function(){
 	this.capture('2.png');
 	this.fillSelectors('form#loginform',{
@@ -30,10 +33,15 @@ casper.withFrame(0,function(){
 	});
 	this.wait(15000);
 });
+casper.then(function(){
+	this.capture('22.png');
+})
 casper.withFrame(0,function(){
 	this.capture('3.png');
 	this.click('form#loginform input[type="submit"]');
-	this.wait(1000);
+	
+});
+casper.then(function(){
 	this.capture('4.png');
 	this.wait(15000);
 });
