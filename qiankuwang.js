@@ -1,4 +1,4 @@
-phantom.outputEncoding = 'GBK';
+phantom.outputEncoding = 'utf8';
 
 var url = 'http://588ku.com/';
 
