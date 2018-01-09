@@ -11,6 +11,12 @@ var casper = require('casper').create({
 
 casper.start().thenOpen(url,function(){
 	this.wait(15000);
+	
+});
+this.wait(15000,function(){
+	this.echo('等待')
+});
+this.then(function(){
 	this.capture('qianku.png');
 });
 
