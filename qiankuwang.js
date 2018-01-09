@@ -35,6 +35,7 @@ casper.withFrame(0,function(){
 casper.thenOpen(url,function(){
 	this.echo('进入'+url);
 	this.capture('3.png');
+	this.wait(15000);
 	this.waitForSelector('.already-sign-but');
 });
 
