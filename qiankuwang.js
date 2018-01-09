@@ -17,25 +17,28 @@ var user = casper.cli.args[0],
 
 casper.start().thenOpen('http://588ku.com/index.php?m=login&a=snsLogin&type=qq&source=',function(){});
 casper.withFrame(0,function(){
-	this.echo(user);
+	this.capture('1.png');
 	this.echo('登录中...')
 	this.click('#switcher_plogin');//切换
 	this.wait(10000);
-	this.capture('1.png');
+});
+casper.withFrame(0,function(){
+	this.capture('2.png');
 	this.fillSelectors('form#loginform',{
 		'#u' : user,
 		'#p' : pwd
 	});
 	this.wait(10000);
-	this.capture('2.png');
+});
+casper.withFrame(0,function(){
+	this.capture('3.png');
 	this.click('form#loginform input[type="submit"]');
 	this.capture('4.png');
 	this.wait(15000);
 });
-
 casper.thenOpen(url,function(){
 	this.echo('进入'+url);
-	this.capture('3.png');
+	this.capture('4.png');
 	this.wait(15000);
 	this.waitForSelector('.already-sign-but');
 });
