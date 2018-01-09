@@ -28,6 +28,7 @@ casper.withFrame(0,function(){
 	});
 	this.capture('2.png');
 	this.click('form#loginform input[type="submit"]');
+	this.capture('4.png');
 	this.wait(15000);
 });
 
