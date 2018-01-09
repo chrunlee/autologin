@@ -15,51 +15,34 @@ var casper = require('casper').create({
 var user = casper.cli.args[0],
 	pwd = casper.cli.args[1];
 
-casper.start().thenOpen('http://588ku.com/index.php?m=login&a=snsLogin&type=qq&source=',function(){});
-casper.withFrame(0,function(){
-	this.capture('1.png');
-	this.echo('登录中...')
+casper.start('http://588ku.com/index.php?m=login&a=snsLogin&type=qq&source=').viewport(1366, 2000).then(function(){
+	this.page.switchToChildFrame(0);
+	this.echo('login...');
 	this.click('#switcher_plogin');//切换
-	this.wait(15000);
-});
-casper.then(function(){
-	this.capture('11.png');
-});
-casper.withFrame(0,function(){
-	this.capture('2.png');
 	this.fillSelectors('form#loginform',{
 		'#u' : user,
 		'#p' : pwd
 	});
-	this.wait(15000);
-});
-casper.then(function(){
-	this.capture('22.png');
-})
-casper.withFrame(0,function(){
-	this.capture('3.png');
 	this.click('form#loginform input[type="submit"]');
-	
+	this.wait(10000);
 });
-casper.then(function(){
-	this.capture('4.png');
-	this.wait(15000);
-});
+
+
 casper.thenOpen(url,function(){
-	this.echo('进入'+url);
+	this.echo('incoming '+url);
 	this.wait(15000);
-	this.capture('5.png');
+	this.capture('3.png');
 	this.waitForSelector('.already-sign-but');
 });
 
 casper.then(function(){
-	this.echo('点击签到');
+	this.echo('click to sign');
 	this.click('a.already-sign-but');
 	this.wait(12000);
 });
 casper.then(function(){
 	if(this.exists('.signIn-btn')){
-		this.echo('还未签到，正在签到中...')
+		this.echo('signing....')
 	}
 });
 casper.then(function(){
@@ -68,7 +51,7 @@ casper.then(function(){
 });
 casper.then(function(){
 	this.capture('res.png');
-	this.echo('签到结束,查看 res.png 图片');
+	this.echo('sign over,look at res.png ');
 });
 casper.then(function(){
 	this.exit();//退出
