@@ -2,6 +2,7 @@ var async = require('async');
 var task = function(){
 	var cache = [];
 	var oneByOne = function(time){
+		console.log('task start ---');
 		async.mapLimit(cache,1,function(item,cb){
 			item(cb);
 		},function(){

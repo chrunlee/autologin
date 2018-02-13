@@ -17,6 +17,8 @@ var task = require('./Task');
 //chandao
 var chandao = require('./chandao');
 
+var gold = require('./gold');
+
 //禅道
 info('2',function(err,rst){
 	var user = rst[0];
@@ -40,9 +42,16 @@ info('3',function(err,rst){
 	});
 });
 
+//黄金价格，低于272发邮件
+task.push(function( cb ){
+	gold(function(){
+		cb(null,true);
+	});
+});
+
 setTimeout(function(){
 	task.start(24 * 60 * 60 * 1000);	
-},10 * 1000);
+},20 * 1000);
 
 
 app.listen(5124,function(){
