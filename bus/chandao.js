@@ -1,6 +1,6 @@
 //bug collect
-var url = 'http://pm.boyuyun.com.cn/zentao/user-login.html';
-var yesurl = 'http://pm.boyuyun.com.cn/zentao/company-dynamic-yesterday--date_desc-51-1000-1.html';
+var url = '';
+var yesurl = '';
 var superagent = require('superagent');
 
 var events = require('events');
@@ -8,6 +8,10 @@ var events = require('events');
 var cheerio = require('cheerio');
 
 var iconv = require('iconv-lite');
+
+var log = require('../lib/log');
+
+var mailer = require('../lib/mailer');
 
 var emitter = new events.EventEmitter();
 
@@ -20,10 +24,13 @@ emitter.on('send',send);
 
 var callback = null;
 
-function getCookie(user,password,des,cb){
-	console.log('[任务] : '+des);
-	callback = cb;
-	console.log('[info] : user='+user+',password='+password);
+function getCookie(item,callback){
+	var user = item.user,password = item.pwd,des = item.description;
+	var other = JSON.parse(item.other);
+	console.log(other);
+	url = other.login,yesurl = other.yesurl;
+	log('[任务] : '+des);
+	log('[info] : user='+user+',password='+password);
 	superagent.post(url)
 		.type('form')
 		.send({'account':user,'password':password})
@@ -50,7 +57,7 @@ function getContent(cookie){
 				var content = $($(item).find('td')[5]).html();//内容
 				name = name.replace(/\\n/g,'');
 				name = name.trim();
-				console.log('[info] : name='+name+',opt='+opt+',obj='+obj);
+				// log('[info] : name='+name+',opt='+opt+',obj='+obj);
 				arr.push({
 					user : name,
 					opt : opt,
@@ -100,9 +107,9 @@ function send(map){
 		content += '</div>';
 	}
 	content +='</div>';
-	var mailer = require('./mailer');
+	
 	mailer('chrunlee@foxmail.com','禅道日常',content,function(){
-		console.log('禅道日常信息发送!已完成。');
+		log('禅道日常信息发送!已完成。');
 		if(callback){
 			callback();
 		}

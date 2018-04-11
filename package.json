@@ -1,26 +1,22 @@
 {
   "name": "autologin",
-  "version": "1.1.0",
+  "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "dependencies": {
     "iconv-lite": "^0.4.19",
-    "mysql": "^2.15.0",
-    "nodemailer": "^4.4.0",
-    "phantomjs": "^2.1.7",
-    "swig": "^1.4.2"
+    "moment": "^2.22.0"
   },
   "devDependencies": {},
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "phantomjs": "node_modules/.bin/phantomjs"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/chrunlee/autologin.git"
   },
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/chrunlee/autologin/issues"
   },

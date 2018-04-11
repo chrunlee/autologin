@@ -1,7 +1,10 @@
 const https = require('https');
-var mailer = require('./mailer');
+var mailer = require('../lib/mailer');
+var log = require('../lib/log');
 const limit = 268;
-function check( cb ){
+function check( item,cb ){
+	var other = JSON.parse(item.other);
+	var limit = other.limit;
 	const opts = {
 		hostname : 'www.dbjb.com',
 		path : '/Index/MethodQuoteprice'
@@ -22,7 +25,7 @@ function check( cb ){
 					//发送邮件
 					const content = '当前黄金价格'+price+'低于'+limit+',请尽快查看存金宝信息，是否购买。';
 					mailer('chrunlee@foxmail.com','黄金价格低于'+limit,content,function(){
-						console.log('黄金价格收集完毕');
+						log('黄金价格收集完毕');
 					});
 					
 				}
@@ -32,7 +35,7 @@ function check( cb ){
 	});
 	req.on('error',function(err){
 		if(err){
-			console.log(err);
+			log(err);
 		}
 		if(cb)cb();
 	})
